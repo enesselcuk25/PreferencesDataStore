@@ -25,12 +25,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         viewModel.personUiModelFlow.observe(this) {
             perAdapter.submitList(it.person)
             updateSort(it.sortOrder)
-            binding.setSwitch = it.showCompleted
+            binding.showCompletedSwitch.isChecked = it.showCompleted
         }
+        setupFilterListeners()
         setUpSort()
     }
 
-   private fun setUpSort() {
+    private fun setUpSort() {
         binding.sortDeadline.setOnCheckedChangeListener { _, checked ->
             viewModel.enableSortByDeadline(checked)
         }
@@ -47,9 +48,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             sortOrder == SortOrder.BY_PRIORITY || sortOrder == SortOrder.BY_DEADLINE_AND_PRIORITY
     }
 
-    fun setupFilterListeners(checked: Boolean) {
-        viewModel.showCompletedPerson(checked)
+    private fun setupFilterListeners() {
+        binding.showCompletedSwitch.setOnCheckedChangeListener { _, checked ->
+            viewModel.showCompletedPerson(checked)
+        }
     }
-
-
 }

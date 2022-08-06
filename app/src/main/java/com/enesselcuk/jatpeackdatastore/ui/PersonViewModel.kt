@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PersonViewModel @Inject constructor(
-    private val personRepos: PersonRepository,
+    personRepos: PersonRepository,
     private val personRepository: PreferencesRepository
 ) : ViewModel() {
 
@@ -52,9 +52,9 @@ class PersonViewModel @Inject constructor(
         return when (sortOrder) {
             SortOrder.NONE -> filteredPerson
             SortOrder.BY_DEADLINE -> filteredPerson.sortedByDescending { it.name }
-            SortOrder.BY_PRIORITY -> filteredPerson.sortedBy { it.address }
+            SortOrder.BY_PRIORITY -> filteredPerson.sortedBy { it.date }
             SortOrder.BY_DEADLINE_AND_PRIORITY -> filteredPerson.sortedWith(
-                compareByDescending<Person> { it.name }.thenBy { it.address }
+                compareByDescending<Person> { it.name }.thenBy { it.date }
             )
         }
     }
