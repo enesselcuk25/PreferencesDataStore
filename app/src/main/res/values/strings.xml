@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">JatpeackDataStore</string>
+    <string name="show_completed">Show completed tasks</string>
+    <string name="priority">Priority</string>
+    <string name="deadline">Deadline</string>
+    <string name="image_reorder">image_reorder</string>
+
 </resources>

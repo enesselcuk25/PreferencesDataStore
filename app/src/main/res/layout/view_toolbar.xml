@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="setSwitchToolbar"
+            type="Boolean" />
+
+        <variable
+            name="setCheckedToolbar"
+            type="com.enesselcuk.jatpeackdatastore.ui.MainActivity" />
+    </data>
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/line_toolbar">
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/show_completed_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="10dp"
+            android:checked="@{setSwitchToolbar}"
+            android:onCheckedChanged="@{(button,bool) -> setCheckedToolbar.setupFilterListeners(bool)}" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+</layout>
